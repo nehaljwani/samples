@@ -12,13 +12,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-controls</artifactId>
-      <version>13</version>
-    </dependency>
-  </dependencies>
   <build>
     <plugins>
       <plugin>
@@ -26,7 +19,20 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.3</version>
         <configuration>
+          <compilerArgs>
+            <arg>--module-path</arg>
+            <arg>${env.CONDA_PREFIX}/lib/javafx-sdk-11.0.2/lib</arg>
+            <arg>--add-modules</arg>
+            <arg>javafx.base,javafx.controls,javafx.graphics</arg>
+          </compilerArgs>
           <mainClass>HelloFX</mainClass>
+          <options>
+            <arg>-Djdk.gtk.version=2</arg>
+            <arg>--module-path</arg>
+            <arg>${env.CONDA_PREFIX}/lib/javafx-sdk-11.0.2/lib</arg>
+            <arg>--add-modules</arg>
+            <arg>javafx.base,javafx.controls,javafx.graphics</arg>
+          </options>
         </configuration>
       </plugin>
     </plugins>
